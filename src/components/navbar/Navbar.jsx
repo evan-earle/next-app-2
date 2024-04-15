@@ -1,7 +1,14 @@
+import Links from "./links/Links";
+
 const Navbar = () => {
   return (
-    <div>Navbar</div>
-  )
-}
+    <div>
+      <div>Logo</div>
+      <div>
+        <Links />
+      </div>
+    </div>
+  );
+};
 
-export default Navbar
+export default Navbar;
