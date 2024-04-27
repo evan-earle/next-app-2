@@ -3,7 +3,7 @@ import styles from "./blog.module.css";
 
 const getData = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
-    cache: "no-store",
+    next: { revalidate: 3600 },
   });
 
   if (!res.ok) {
