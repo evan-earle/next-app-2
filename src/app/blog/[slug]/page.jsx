@@ -22,26 +22,17 @@ const SinglePostPage = async ({ params }) => {
 
   // FETCH DATA WITHOUT API
   const post = await getPost(slug);
+
   return (
     <div className={styles.container}>
-      <div className={styles.imgContainer}>
-        <Image
-          className={styles.img}
-          src="https://images.pexels.com/photos/23105927/pexels-photo-23105927/free-photo-of-a-photo-of-the-ocean-with-waves-crashing.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt=""
-          fill
-        />
-      </div>
+      {post.img && (
+        <div className={styles.imgContainer}>
+          <Image className={styles.img} src={post.img} alt="" fill />
+        </div>
+      )}
       <div className={styles.textContainer}>
         <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail}>
-          <Image
-            className={styles.avatar}
-            src="https://images.pexels.com/photos/16141843/pexels-photo-16141843/free-photo-of-pampas-grass-growing-against-blue-sky.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-            width={50}
-            height={50}
-          />
           {post && (
             <Suspense fallback={<div>Loading...</div>}>
               <PostUser userId={post.userId} />
@@ -52,7 +43,7 @@ const SinglePostPage = async ({ params }) => {
             <span className={styles.detailValue}>01.01.2024</span>
           </div>
         </div>
-        <div className={styles.content}>{post.body}</div>
+        <div className={styles.content}>{post.desc}</div>
       </div>
     </div>
   );

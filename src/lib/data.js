@@ -1,11 +1,11 @@
+import { Post, User } from "./models";
+import { connectToDB } from "./utils";
+
 // TEMPORARY DATA
 // const users = [
 //   { id: 1, name: "John" },
 //   { id: 1, name: "Jane" },
 // ];
-
-import { Post, User } from "./models";
-import { connectToDB } from "./utils";
 
 // const posts = [
 //   { id: 1, title: "Post 1", body: ".....", userId: 1 },
@@ -29,7 +29,7 @@ export const getPosts = async () => {
 export const getPost = async (slug) => {
   try {
     connectToDB();
-    const post = await Post.find({ slug: slug });
+    const post = await Post.findOne({ slug: slug });
     return post;
   } catch (error) {
     console.log(error);
